@@ -15,7 +15,8 @@ function computerPlay (arr) {
 
 //console.log(computerPlay(moves));
 
-
+/* function allows 5 ounds of playRound function while alerting final message of the winner of the game
+*/
 
 function game () {
     for ( let i = 0; i < 5; i++) {
