@@ -3,8 +3,25 @@ const moves = [
     'paper', 
     'scissors'
 ];
+let yourWin = 0;
+let compWin = 0;
+let playerSelection = '';
+let computerSelection = '';
 
-//console.log(`${moves}`);
+// div element to hold results
+const resultDiv = document.createElement('div');
+const body = document.querySelector('body');
+body.appendChild(resultDiv);
+
+// p tag shows winner of round
+const round = document.createElement('p');
+resultDiv.appendChild(round);
+
+// shows scoreboard 
+const results = document.createElement('h3');
+resultDiv.appendChild(results);
+results.textContent = `YOU: ${yourWin} vs COMP: ${compWin}`;
+
 
 /* Produces the Computer's random move*/
 
@@ -13,51 +30,35 @@ function computerPlay (arr) {
     return arr[randomMove];
 };
 
-// const rock = document.querySelector('#rock');
-// const paper = document.querySelector('#paper');
-// const scissors = document.querySelector('scissors');
 
-// rock.addEventListener ('click', ()=>{})
-
-// Pulls all button tags a
+// Gahers all button tags into NodeList
 const buttons = document.querySelectorAll('button');
 
-//takes each button tag pulled 'buttons' and assigns chosen button to the playerSelection
-//and runs playRound function
+//Takes each button tag and assigns clicked button to the playerSelection then runs playRound function
 
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-            for ( let i = 0; i < 5; i++) {
-                playerSelection = (button.id);
-                playRound(playerSelection, computerSelection)
-            } results.textContent=(`You:${yourWin} Computer:${compWin}`);
-            if ( yourWin > compWin){
-                round.textContent = (`You ate that.`)
-            } else (
-                round.textContent = (`Try again, loser. (refresh)`)
-            )
-
+        playerSelection = (button.id);
+        playRound(playerSelection, computerSelection);
+        
     })
 })
 
 
-
-//console.log(computerPlay(moves));
-
 /* function allows 5 rounds of playRound function while alerting final message of the winner of the game
 */
 
-// function game () {
-//     for ( let i = 0; i < 5; i++) {
-//         playRound (playerSelection, computerSelection);
-//     }  alert(`You:${yourWin} Computer:${compWin}`);
-//     if ( yourWin > compWin){
-//         round.textContent = (`You ate that.`)
-//     } else (
-//         round.textContent = (`Try again, loser. (refresh)`)
-//     )
-// } 
+function game () {
+    for ( let i = 0; i < 5; i++) {
+        playRound (playerSelection, computerSelection)
+    }  results.textContent=(`You:${yourWin} Computer:${compWin}`);
+    if ( yourWin > compWin){
+        round.textContent = (`You ate that.`)
+    } else (
+        round.textContent = (`Try again, loser. (refresh)`)
+    )
+} 
 
 /* function takes "moves" parameters, capitalizes the inputs to make them case insensitive, and then compares moves to determine winner.
 ROCK > SCISSORS
@@ -86,26 +87,8 @@ function playRound (playerSelection, computerSelection) {
     } else {
         round.textContent = (`You lose :( ${computer} beats ${player}`);
     compWin++;
-    }
+    } results.textContent = `YOU: ${yourWin} vs COMP: ${compWin}`
 }
 
-let yourWin = 0;
-let compWin = 0;
-let playerSelection = '';
-let computerSelection = '';
-// console.log(game());
-
-
-const resultDiv = document.createElement('div');
-const body = document.querySelector('body');
-body.appendChild(resultDiv);
-
-const round = document.createElement('p');
-resultDiv.appendChild(round);
-
-
-const results = document.createElement('h3');
-resultDiv.appendChild(results);
-results.textContent = `YOU: ${yourWin} vs COMP: ${compWin}`;
 
 
